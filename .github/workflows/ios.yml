@@ -14,9 +14,10 @@ jobs:
 
       - name: Install Libraries
         run: |
-          haxelib git lime https://github.com/mcagabe19/lime.git
-          haxelib install openfl
-          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
+          haxelib git lime https://github.com/mcagabe19-stuff/lime-8.2.1.git --quiet
+          haxelib install openfl --quiet
+          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp --quiet
+          haxelib install format
           haxelib run lime rebuild hxcpp
 
       - name: Compile
