@@ -26,10 +26,10 @@ jobs:
 
       - name: Make .ipa
         run: |
-          cd export/*/ios/build/*-iphoneos
+          cd export/release/ios/build/Release-iphoneos
           mkdir Payload
           mv *.app Payload
-          zip -r Funkin.ipa Payload
+          zip -r LimeHelloWorld.ipa Payload
 
       - name: Upload Artifact
         uses: actions/upload-artifact@main
