@@ -10,4 +10,9 @@
 	<haxelib name="lime" />
 
 	<assets path="Assets" rename="assets" />
+
+	<section if="ios">
+		<define name="objc" />
+		<ios linker-flags="-ObjC" />
+	</section>
 </project>
