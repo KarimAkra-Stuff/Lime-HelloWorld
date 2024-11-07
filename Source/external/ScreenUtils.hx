@@ -1,6 +1,6 @@
 package external;
 
-@:buildXml('<include name="${this_dir}/Source/external/project/Build.xml" />')
+@:buildXml('<include name="/Users/runner/work/Lime-HelloWorld/Lime-HelloWorld/Source/external/project/Build.xml" />')
 @:include('ScreenUtils.hpp')
 @:unreflective
 extern class ScreenUtils
