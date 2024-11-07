@@ -25,17 +25,7 @@ jobs:
 
       - name: Make .ipa
         run: |
-          echo "$(ls)"
-          cd Export/
-          echo "$(ls)"
-          cd release/
-          echo "$(ls)"
-          cd ios/
-          echo "$(ls)"
-          cd build/
-          echo "$(ls)"
-          cd Release-iphoneos
-          echo "$(ls)"
+          cd Export/ios/build/*-iphoneos
           mkdir Payload
           mv *.app Payload
           zip -r LimeHelloWorld.ipa Payload
