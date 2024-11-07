@@ -1,8 +1,8 @@
 package;
 
-import openfl.errors.Error;
-import openfl.events.ErrorEvent;
-import openfl.events.UncaughtErrorEvent;
+//import openfl.errors.Error;
+//import openfl.events.ErrorEvent;
+//import openfl.events.UncaughtErrorEvent;
 import lime.app.Application;
 import lime.system.System as LimeSystem;
 import sys.FileSystem;
@@ -24,10 +24,10 @@ class CrashHandler
 	 */
 	public static function init():Void
 	{
-		openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
-		#if cpp
-		untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
-		#end
+		//openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onUncaughtError);
+		//#if cpp
+		//untyped __global__.__hxcpp_set_critical_error_handler(onCriticalError);
+		//#end
 	}
 
 	/**
@@ -35,58 +35,57 @@ class CrashHandler
 	 * Prevents the default behavior and logs the error message and stack trace.
 	 * 
 	 * @param e The uncaught error event.
-	 */
-	private static function onUncaughtError(e:UncaughtErrorEvent):Void
-	{
-		e.preventDefault();
-		e.stopPropagation();
-		e.stopImmediatePropagation();
+	 */	// private static function onUncaughtError(e:UncaughtErrorEvent):Void
+	// {
+	// 	e.preventDefault();
+	// 	e.stopPropagation();
+	// 	e.stopImmediatePropagation();
 
-		var m:String = e.error;
-		if (Std.isOfType(e.error, Error))
-		{
-			var err = cast(e.error, Error);
-			m = '${err.message}';
-		}
-		else if (Std.isOfType(e.error, ErrorEvent))
-		{
-			var err = cast(e.error, ErrorEvent);
-			m = '${err.text}';
-		}
-		var stack = haxe.CallStack.exceptionStack();
-		var stackLabelArr:Array<String> = [];
-		var stackLabel:String = "";
-		for (e in stack)
-		{
-			switch (e)
-			{
-				case CFunction:
-					stackLabelArr.push("Non-Haxe (C) Function");
-				case Module(c):
-					stackLabelArr.push('Module ${c}');
-				case FilePos(parent, file, line, col):
-					switch (parent)
-					{
-						case Method(cla, func):
-							stackLabelArr.push('${file.replace('.hx', '')}.$func() [line $line]');
-						case _:
-							stackLabelArr.push('${file.replace('.hx', '')} [line $line]');
-					}
-				case LocalFunction(v):
-					stackLabelArr.push('Local Function ${v}');
-				case Method(cl, m):
-					stackLabelArr.push('${cl} - ${m}');
-			}
-		}
-		stackLabel = stackLabelArr.join('\r\n');
+	// 	var m:String = e.error;
+	// 	if (Std.isOfType(e.error, Error))
+	// 	{
+	// 		var err = cast(e.error, Error);
+	// 		m = '${err.message}';
+	// 	}
+	// 	else if (Std.isOfType(e.error, ErrorEvent))
+	// 	{
+	// 		var err = cast(e.error, ErrorEvent);
+	// 		m = '${err.text}';
+	// 	}
+	// 	var stack = haxe.CallStack.exceptionStack();
+	// 	var stackLabelArr:Array<String> = [];
+	// 	var stackLabel:String = "";
+	// 	for (e in stack)
+	// 	{
+	// 		switch (e)
+	// 		{
+	// 			case CFunction:
+	// 				stackLabelArr.push("Non-Haxe (C) Function");
+	// 			case Module(c):
+	// 				stackLabelArr.push('Module ${c}');
+	// 			case FilePos(parent, file, line, col):
+	// 				switch (parent)
+	// 				{
+	// 					case Method(cla, func):
+	// 						stackLabelArr.push('${file.replace('.hx', '')}.$func() [line $line]');
+	// 					case _:
+	// 						stackLabelArr.push('${file.replace('.hx', '')} [line $line]');
+	// 				}
+	// 			case LocalFunction(v):
+	// 				stackLabelArr.push('Local Function ${v}');
+	// 			case Method(cl, m):
+	// 				stackLabelArr.push('${cl} - ${m}');
+	// 		}
+	// 	}
+	// 	stackLabel = stackLabelArr.join('\r\n');
 
-		#if sys
-		saveErrorMessage('$m\n$stackLabel');
-		#end
+	// 	#if sys
+	// 	saveErrorMessage('$m\n$stackLabel');
+	// 	#end
 
-		alertDialog('$m\n$stackLabel', 'Error!');
-		LimeSystem.exit(1);
-	}
+	// 	alertDialog('$m\n$stackLabel', 'Error!');
+	// 	LimeSystem.exit(1);
+	// }
 
 	#if cpp
 	/**
