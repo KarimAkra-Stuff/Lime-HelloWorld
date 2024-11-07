@@ -3,15 +3,15 @@
 	<pragma once="true" />
 
 	<files id="haxe">
-		<compilerflag value="-I${this_dir}/ios/include" if="iphoneos || iphonesim" />
+		<compilerflag value="-I${this_dir}/Source/external/ios/include" if="iphoneos || iphonesim" />
 	</files>
 
 	<files id="__main__">
-		<compilerflag value="-I${this_dir}/ios/include" if="iphoneos || iphonesim" />
+		<compilerflag value="-I${this_dir}/Source/external/ios/include" if="iphoneos || iphonesim" />
 	</files>
 
-	<files id="external-ios" dir="${this_dir}/ios" if="iphoneos || iphonesim">
-		<compilerflag value="-I${this_dir}/ios/include" />
+	<files id="external-ios" dir="${this_dir}/Source/external/ios" if="iphoneos || iphonesim">
+		<compilerflag value="-I${this_dir}/Source/external/ios/include" />
 
 		<file name="src/ScreenUtils.mm" />
 	</files>
