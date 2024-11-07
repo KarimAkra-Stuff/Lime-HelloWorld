@@ -3,7 +3,6 @@ package;
 import lime.app.Application;
 import lime.graphics.RenderContext;
 import lime.app.Application;
-import external.ScreenUtils;
 import cpp.Pointer;
 
 /**
