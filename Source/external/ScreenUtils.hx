@@ -1,6 +1,6 @@
 package external;
 
-@:build(LinkerMacro.xml('project/Build.xml'))
+@:buildXml(LinkerMacro.xml('project/Build.xml'))
 @:include('ScreenUtils.hpp')
 @:unreflective
 extern class ScreenUtils
