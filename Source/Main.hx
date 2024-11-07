@@ -2,6 +2,9 @@ package;
 
 import lime.app.Application;
 import lime.graphics.RenderContext;
+import lime.app.Application;
+import external.ScreenUtils;
+import cpp.Pointer;
 
 /**
  * The entry point of the application.
@@ -13,6 +16,18 @@ class Main extends Application
     super();
 
     trace('Hello World');
+
+    
+    Application.current.preloader.onComplete.add(function() {
+      var top:Float = -1;
+      var bottom:Float = -1;
+      var left:Float = -1;
+      var right:Float = -1;
+
+      ScreenUtils.getSafeAreaInsets(Pointer.addressOf(top).raw, Pointer.addressOf(bottom).raw, Pointer.addressOf(left).raw, Pointer.addressOf(right).raw);
+
+      Application.current.window.alert('Top: ${top}\nBottom: ${bottom}\nLeft: ${left}\nRight: ${right}', "Notch Info");
+    });
   }
 
   public override function render(context:RenderContext):Void
