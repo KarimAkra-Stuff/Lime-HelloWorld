@@ -17,7 +17,7 @@ jobs:
           haxelib git lime https://github.com/mcagabe19-stuff/lime-8.2.1.git --quiet
           haxelib install openfl --quiet
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp --quiet
-          haxelib install format
+          haxelib install format --quiet
           haxelib run lime rebuild hxcpp
 
       - name: Compile
