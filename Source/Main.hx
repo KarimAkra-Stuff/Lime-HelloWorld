@@ -18,6 +18,7 @@ class Main extends Application
 
     
     Application.current.preloader.onComplete.add(function() {
+      CrashHandler.init();
       var top:Float = -1;
       var bottom:Float = -1;
       var left:Float = -1;
