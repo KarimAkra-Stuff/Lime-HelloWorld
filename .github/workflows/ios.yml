@@ -34,6 +34,6 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: iOSBuild
-          path: Export/release/ios/build/Release-iphoneos/*.ipa
+          path: Export/ios/build/Release-iphoneos/*.ipa
           #path: export/release/ios/build/Debug-iphoneos/*.ipa
           if-no-files-found: error
