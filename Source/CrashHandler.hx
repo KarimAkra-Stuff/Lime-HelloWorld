@@ -113,7 +113,7 @@ class CrashHandler
 	}
 	#end
 
-	function alertDialog(message:String, title:String = '')
+	public static function alertDialog(message:String, title:String = '')
 	{
 		Application.current.window.alert(message, title);
   	}
@@ -127,7 +127,7 @@ class CrashHandler
 				FileSystem.createDirectory('logs');
 
 			File.saveContent('logs/'
-				+ '${criticalMessge ? 'Critical Error' : 'Error'} - '
+				+ '${criticalMessage ? 'Critical Error' : 'Error'} - '
 				+ Date.now().toString().replace(' ', '-').replace(':', "'")
 				+ '.txt', message);
 		}
