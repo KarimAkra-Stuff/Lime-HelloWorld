@@ -11,7 +11,6 @@ using haxe.io.Path;
  * This class provides a macro to include an XML build file in the metadata of a Haxe class.
  * The file must be located relative to the directory of the Haxe class that uses this macro.
  */
-@:nullSafety
 class LinkerMacro
 {
   /**
@@ -26,13 +25,14 @@ class LinkerMacro
     final fileToInclude:String = Path.join([sourcePath, file_name?.length > 0 ? file_name : 'Build.xml']);
 
     if (!FileSystem.exists(fileToInclude)) Context.error('The specified file "$fileToInclude" could not be found at "$sourcePath".', pos);
-
+    trace('XML File Path: $fileToInclude');
     final includeElement:Xml = Xml.createElement('include');
     includeElement.set('name', fileToInclude);
     // Context.getLocalClass().get().meta.add(':buildXml', [
       // {expr: EConst(CString(Printer.print(includeElement, true))), pos: pos}], pos);
 
-    return includeElement.toString()
+    trace('Build command structure: ${includeElement.toString()}');
+    return includeElement.toString();
    // return Context.getBuildFields();
   }
 }
