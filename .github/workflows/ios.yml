@@ -1,0 +1,37 @@
+name: Build IOS
+on: workflow_dispatch
+jobs:
+  iOS:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@main
+
+      - name: Setup Haxe
+        uses: krdlab/setup-haxe@master
+        with:
+          haxe-version: 4.3.6
+
+      - name: Install Libraries
+        run: |
+          haxelib git lime https://github.com/mcagabe19/lime.git
+          haxelib install openfl
+          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp
+          haxelib run lime rebuild hxcpp
+
+      - name: Compile
+        run: haxelib run lime build ios -nosign
+
+      - name: Make .ipa
+        run: |
+          cd export/*/ios/build/*-iphoneos
+          mkdir Payload
+          mv *.app Payload
+          zip -r Funkin.ipa Payload
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: iOSBuild
+          path: export/release/ios/build/Release-iphoneos/*.ipa
+          if-no-files-found: error
