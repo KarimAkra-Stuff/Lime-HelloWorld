@@ -14,7 +14,6 @@ jobs:
 
       - name: Install Libraries
         run: |
-          # haxelib git lime https://github.com/mcagabe19-stuff/lime-8.2.1.git --quiet
           haxelib git lime https://github.com/FunkinDroidTeam/lime.git --quiet
           haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp.git --quiet
           haxelib install openfl --quiet
@@ -26,7 +25,17 @@ jobs:
 
       - name: Make .ipa
         run: |
-          cd export/debug/ios/build/Debug-iphoneos
+          echo "$(ls)"
+          cd export/
+          echo "$(ls)"
+          cd release/
+          echo "$(ls)"
+          cd ios/
+          echo "$(ls)"
+          cd build/
+          echo "$(ls)"
+          cd Debug-iphoneos
+          echo "$(ls)"
           mkdir Payload
           mv *.app Payload
           zip -r LimeHelloWorld.ipa Payload
@@ -35,5 +44,5 @@ jobs:
         uses: actions/upload-artifact@main
         with:
           name: iOSBuild
-          path: export/debug/ios/build/Debug-iphoneos/*.ipa
+          path: export/release/ios/build/Debug-iphoneos/*.ipa
           if-no-files-found: error
