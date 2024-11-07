@@ -1,6 +1,6 @@
 package external;
 
-@:buildXml('<include name="${this_dir}/project/Build.xml" />')
+@:buildXml('<include name="${this_dir}/Source/external/project/Build.xml" />')
 @:include('ScreenUtils.hpp')
 @:unreflective
 extern class ScreenUtils
