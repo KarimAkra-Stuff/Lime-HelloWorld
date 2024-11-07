@@ -113,10 +113,10 @@ class CrashHandler
 	}
 	#end
 
-  function alertDialog(message:String, title:String = '');
-  {
-    Application.current.window.alert(message, title);
-  }
+	function alertDialog(message:String, title:String = '')
+	{
+		Application.current.window.alert(message, title);
+  	}
   
 	#if sys
 	private static function saveErrorMessage(message:String, ?criticalMessage:Bool = false):Void
