@@ -19,7 +19,7 @@ class LinkerMacro
    * @param file_name The name of the XML file to include. Defaults to `Build.xml` if not provided.
    * @return An array of fields that are processed during the build.
    */
-  public static macro function xml(?file_name:String = 'Build.xml'):Array<Field>
+  public static macro function xml(?file_name:String = 'Build.xml'):String
   {
     final pos:Position = Context.currentPos();
     final sourcePath:String = FileSystem.absolutePath(Context.getPosInfos(pos).file.directory()).removeTrailingSlashes();
@@ -29,9 +29,10 @@ class LinkerMacro
 
     final includeElement:Xml = Xml.createElement('include');
     includeElement.set('name', fileToInclude);
-    Context.getLocalClass().get().meta.add(':buildXml', [
-      {expr: EConst(CString(Printer.print(includeElement, true))), pos: pos}], pos);
+    // Context.getLocalClass().get().meta.add(':buildXml', [
+      // {expr: EConst(CString(Printer.print(includeElement, true))), pos: pos}], pos);
 
-    return Context.getBuildFields();
+    return includeElement.toString()
+   // return Context.getBuildFields();
   }
 }
