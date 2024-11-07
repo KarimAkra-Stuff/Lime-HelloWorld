@@ -17,7 +17,7 @@ class Main extends Application
     trace('Hello World');
 
     
-    Application.current.preloader.onComplete.add(function() {
+    preloader.onComplete.add(function() {
       CrashHandler.init();
       var top:Float = -1;
       var bottom:Float = -1;
@@ -26,7 +26,7 @@ class Main extends Application
 
       ScreenUtils.getSafeAreaInsets(Pointer.addressOf(top).raw, Pointer.addressOf(bottom).raw, Pointer.addressOf(left).raw, Pointer.addressOf(right).raw);
 
-      Application.current.window.alert('Top: ${top}\nBottom: ${bottom}\nLeft: ${left}\nRight: ${right}', "Notch Info");
+      window.alert('Top: ${top}\nBottom: ${bottom}\nLeft: ${left}\nRight: ${right}', "Notch Info");
     });
   }
 
