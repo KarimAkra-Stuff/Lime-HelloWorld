@@ -14,8 +14,9 @@ jobs:
 
       - name: Install Libraries
         run: |
-          haxelib git lime https://github.com/mcagabe19-stuff/lime-8.2.1.git --quiet
-          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp --quiet
+          # haxelib git lime https://github.com/mcagabe19-stuff/lime-8.2.1.git --quiet
+          haxelib git lime https://github.com/FunkinDroidTeam/lime.git --quiet
+          haxelib git hxcpp https://github.com/mcagabe19-stuff/hxcpp.git --quiet
           haxelib install openfl --quiet
           haxelib install format --quiet
           haxelib run lime rebuild hxcpp
